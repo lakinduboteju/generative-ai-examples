@@ -11,6 +11,12 @@ class AmazonBedrockModels(StrEnum):
     MISTRAL_7B = "mistral.mistral-7b-instruct-v0:2",
 
 
+class AmazonBedrockClaudeModels(StrEnum):
+    CLAUDE_INSTANT = str(AmazonBedrockModels.CLAUDE_INSTANT),
+    CLAUDE_3_HAIKU = str(AmazonBedrockModels.CLAUDE_3_HAIKU),
+    CLAUDE_3_5_SONNET = str(AmazonBedrockModels.CLAUDE_3_5_SONNET),
+
+
 def converse_with_model(bedrock_runtime_client: boto3.client,
                         model: AmazonBedrockModels,
                         messages: list[dict],

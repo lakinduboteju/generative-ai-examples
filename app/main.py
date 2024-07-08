@@ -1,6 +1,10 @@
+import os
+import json
 from config import read_aws_access_keys, config
 import boto3
-from amazon_bedrock import converse_with_model, AmazonBedrockModels, create_system_messages, create_text_message, parse_response
+from file_utils import read_file_as_string
+from amazon_bedrock import AmazonBedrockClaudeModels
+from organize_medical_record_with_claude import organize_medical_record_with_claude
 
 
 aws_access_keys = read_aws_access_keys()
@@ -11,18 +15,16 @@ boto3.setup_default_session(aws_access_key_id=aws_access_keys.aws_access_key_id,
 bedrock_runtime_client = boto3.client("bedrock-runtime",
                                       region_name=config.amazon_bedrock.region)
 
-response = converse_with_model(bedrock_runtime_client,
-                               AmazonBedrockModels.CLAUDE_INSTANT,
-                               [
-                                   create_text_message("Hello, how are you?"),
-                               ],
-                               10,
-                               create_system_messages("Please respond only with emoji."),
-                               0.5, 0.5,
-                               {"top_k": 200}
+organized_medical_history = organize_medical_record_with_claude(
+    bedrock_runtime_client,
+    AmazonBedrockClaudeModels.CLAUDE_3_5_SONNET,
+    read_file_as_string(
+        # Medical history note was taken from : https://www.youtube.com/watch?v=BmQppGzk78A
+        os.path.join("inputs", "medical_history_note.txt")
+    )
 )
 
-response = parse_response(response)
-
-print(response.output_message["content"][0]["text"])
-print(response.input_tokens, response.output_tokens)
+print(json.dumps(
+    organized_medical_history,
+    indent=4
+))
