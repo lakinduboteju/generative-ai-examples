@@ -10,8 +10,7 @@ $ docker exec -it generative-ai-examples bash
 ```
 
 ``` bash
-$ poetry init
-$ poetry add -G dev debugpy
+$ poetry install
 ```
 
 ``` bash
