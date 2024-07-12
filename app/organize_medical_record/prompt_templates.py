@@ -1,13 +1,6 @@
-
 import json
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, PromptTemplate
 from langchain_core.messages import SystemMessage
-
-
-hello_prompt_template = ChatPromptTemplate.from_messages([
-    SystemMessage("Respond only in English and use emojis excessively"),
-    HumanMessagePromptTemplate.from_template("Hello, I'm {name}. How are you today?"),
-])
 
 
 def prompt_template_to_organize_a_medical_record_into_json() -> ChatPromptTemplate:
