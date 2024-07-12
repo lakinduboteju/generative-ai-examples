@@ -6,7 +6,8 @@ services:
     build: .
     image: generative-ai-examples:latest
     volumes:
-      - ./app:/app
+      - ./src:/app
+      - ./assets:/assets
       - ~/.aws:/root/.aws
     environment:
       - PYTHONUNBUFFERED=1

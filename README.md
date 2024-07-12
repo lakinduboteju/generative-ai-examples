@@ -8,6 +8,7 @@ mv .env.example .env
 ```
 
 ``` bash
+$ docker compose build
 $ docker compose up -d
 $ docker compose down
 ```

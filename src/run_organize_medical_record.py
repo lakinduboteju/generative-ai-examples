@@ -31,7 +31,7 @@ chain = prompt_template_to_organize_a_medical_record_into_json() | llm_model | S
 output = chain.invoke(
     {
         # Medical history note was taken from : https://www.youtube.com/watch?v=BmQppGzk78A
-        "medical_history": read_file_as_string(os.path.join("inputs", "medical_history_note.txt")),
+        "medical_history": read_file_as_string(os.path.join("/assets", "medical_history_note.txt")),
     },
     {
         "callbacks": [StdOutCallbackHandler()],
