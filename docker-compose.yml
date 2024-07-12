@@ -10,6 +10,8 @@ services:
       - ~/.aws:/root/.aws
     environment:
       - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
     ports:
       - 5678:5678
     working_dir: /app

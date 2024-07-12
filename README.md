@@ -16,6 +16,13 @@ $ poetry install
 ```
 
 ``` bash
+$ poetry run python main.py
+```
+
+## Debug
+
+``` bash
+# Run following command and debug using Pythong Debugger in vscode
 $ poetry run python -Xfrozen_modules=off -m debugpy --listen 0.0.0.0:5678 --wait-for-client main.py
 ```
 
