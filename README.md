@@ -34,5 +34,5 @@ $ poetry run python -Xfrozen_modules=off -m debugpy --listen 0.0.0.0:5678 --wait
 
 ## Contents
 
-1. Hello, World! : [hello_world](app/hello_world/)
-2. Organize Medical Record : [organize_medical_record](app/organize_medical_record/)
+1. Hello, World! : [hello_world](src/hello_world/)
+2. Organize Medical Record : [organize_medical_record](src/organize_medical_record/)
