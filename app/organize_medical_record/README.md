@@ -1,6 +1,6 @@
 ## Input
 
-Input medical history record
+Input medical history record taken from : https://www.youtube.com/watch?v=BmQppGzk78A
 
 ```
 63 year old man with limited stage adenocarcinoma of the left lung.
