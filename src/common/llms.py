@@ -13,6 +13,7 @@ class LLMModel(Enum):
     CLAUDE_3_5_SONNET = 1
     LLAMA_3 = 2
     MISTRAL = 3
+    OPENAI_GPT4O_MINI = 4
 
 
 @dataclass
@@ -74,6 +75,15 @@ def create_llm_model(llm_model: LLMModel, llm_credentials: LLMCredentials, tempe
                 params["credentials_profile_name"] = llm_credentials.aws_profile
 
             llm_model = ChatBedrock(**params)
+        
+        case LLMModel.OPENAI_GPT4O_MINI:
+            llm_model = ChatOpenAI(
+                model="gpt-4o-mini",
+                max_tokens=max_output_tokens,
+                temperature=temperature,
+                openai_api_key=llm_credentials.openai_api_key,
+                openai_organization=llm_credentials.openai_org_id,
+            )
 
         case _:
             raise ValueError(f"Unknown LLM model: {llm_model}")
